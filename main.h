@@ -3,49 +3,31 @@
 
 #include <stdlib.h>
 #include <stdarg.h>
-#include <stddef.h>
-
 /**
- * struct structprint - contains structure
- * @q: The location and method to translate data to character
- * @u: print function for specific type
- *
- * Return: int
- */
-typedef struct structprint
-{
-	char *q;
-	int (*u)(char *format, va_list);
-} structype;
-
-/**
- * struct flag - struture containing
- * @pluse: flag id '+' character
- * @hash: flag id '#' character
- * @space: flag id ' ' charater
+ * struct flags - struct containing flags to "turn on"
+ * when a flag specifier is passed to _printf()
+ * @plus: flag for the '+' character
+ * @space: flag for the ' ' character
+ * @hash: flag for the '#' character
  */
 typedef struct flags
 {
 	int plus;
-	int hash;
 	int space;
-} flag_t;
-
+	int hash;
+} flags_t;
 
 /**
- * struct printHandler - struture containing
- * @c: The location and method to translate data to character
- * @f: print function for specific type
- *
- * Return: int
+ * struct printHandler - struct to choose the right function depending
+ * on the format specifier passed to _printf()
+ * @c: format specifier
+ * @f: pointer to the correct printing function
  */
-typedef struct structprint
+typedef struct printHandler
 {
-        char c;
-        int (*f)(flags_t *f, va_list ap);
+	char c;
+	int (*f)(va_list ap, flags_t *f);
 } ph;
-
-
 int print_int(va_list l, flags_t *f);
 void print_number(int n);
 int print_unsigned(va_list l, flags_t *f);
