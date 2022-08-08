@@ -6,7 +6,7 @@
 #include <stddef.h>
 
 /**
- * struct structprint - struture containing
+ * struct structprint - contains structure
  * @q: The location and method to translate data to character
  * @u: print function for specific type
  *

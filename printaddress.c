@@ -5,7 +5,7 @@
  * @l: va_list arguments from _printf
  * @f: pointer to the struct flags that determines
  * if a flag is passed to _printf
- * Return: number of char printed
+ * Return: number of chars printed
  */
 int print_address(va_list l, flags_t *f)
 {
